@@ -57,3 +57,5 @@ typings/
 # dotenv environment variables file
 .env
 
+# visual studio code 설정폴더 추가
+.vscode/
