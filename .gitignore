@@ -57,7 +57,12 @@ typings/
 # dotenv environment variables file
 .env
 
-# visual studio code 설정폴더 추가
+# visual studio code 설정폴더
 .vscode/
+
+# mac 관련 파일 
 .DS_Store
+
+# 웹스톰 관련 파일
 .idea/
+
