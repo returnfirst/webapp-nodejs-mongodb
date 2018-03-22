@@ -66,3 +66,6 @@ typings/
 # 웹스톰 관련 파일
 .idea/
 
+# github 보안 관련 문제 파일
+package-lock.json
+
