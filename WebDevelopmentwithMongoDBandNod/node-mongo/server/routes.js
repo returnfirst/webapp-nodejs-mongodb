@@ -24,11 +24,11 @@ module.exports = function (app) {
     // (GET) '/users' : 회원목록을 보내준다.
     router.get('/users', user.viewUsers);
 
-    router.get('/ssam', function(req, res) {
+    router.get('/ssam', function(req, res) { ///viewUsers
         res.send('격투기 까페 전체 게시판 보기');
     });
 
-    router.get('/ssam/:bbs', function(req, res) {
+    router.get('/ssam/:bbs', function(req, res) { //viewSsams
         const kindOfBbs = req.params.bbs; 
         if (kindOfBbs === 'kisul') {
             res.send('격투기 기술 보기 게시판 화면')
