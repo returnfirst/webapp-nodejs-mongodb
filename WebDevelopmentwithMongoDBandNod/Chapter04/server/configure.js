@@ -1,14 +1,14 @@
-const path = require('path'),
-    routes = require('./routes'),
-    exphbs = require('express-handlebars'),
-    express = require('express'),
-    bodyParser = require('body-parser'),
-    cookieParser = require('cookie-parser'),
-    morgan = require('morgan'),
-    methodOverride = require('method-override'),
-    errorHandler = require('errorhandler');
+const path = require('path');
+const routes = require('./routes');
+const exphbs = require('express-handlebars');
+const express = require('express');
+const bodyParser = require('body-parser');
+const cookieParser = require('cookie-parser');
+const morgan = require('morgan');
+const methodOverride = require('method-override');
+const errorHandler = require('errorhandler');
 
-module.exports = (app) => {
+module.exports = function(app) {
     app.use(morgan('dev'));
 
     app.use(bodyParser.json());
