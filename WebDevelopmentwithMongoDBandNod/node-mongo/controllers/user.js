@@ -9,9 +9,9 @@ module.exports = {
             <html>
                 <body>
                     <ul>
-                        <li>${userObj.hobby[0]}</li>
-                        <li>${userObj.hobby[1]}</li>
-                        <li>${userObj.hobby[2]}</li>
+                        <li>${userObj.habby[0]}</li>
+                        <li>${userObj.habby[1]}</li>
+                        <li>${userObj.habby[2]}</li>
                     </ul>
                 </body>
             </html>
