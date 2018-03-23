@@ -12,6 +12,7 @@ module.exports = {
                         <li>${userObj.habby[0]}</li>
                         <li>${userObj.habby[1]}</li>
                         <li>${userObj.habby[2]}</li>
+                        <li>${userObj.habby[3]}</li>
                     </ul>
                 </body>
             </html>

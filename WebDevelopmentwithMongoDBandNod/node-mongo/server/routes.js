@@ -4,6 +4,7 @@ const home = require('../controllers/home');
 const auth = require('../controllers/auth');
 const user = require('../controllers/user');
 const ssam = require('../controllers/ssam');
+const movie = require('../controllers/movie');
 
 module.exports = function (app) {
 
@@ -24,27 +25,13 @@ module.exports = function (app) {
     // (GET) '/users' : 회원목록을 보내준다.
     router.get('/users', user.viewUsers);
 
-    router.get('/ssam', function(req, res) { ///viewUsers
-        res.send('격투기 까페 전체 게시판 보기');
-    });
+    router.get('/ssam', ssam.viewSsams);
 
-    router.get('/ssam/:bbs', function(req, res) { //viewSsams
-        const kindOfBbs = req.params.bbs; 
-        if (kindOfBbs === 'kisul') {
-            res.send('격투기 기술 보기 게시판 화면')
-        } else if (kindOfBbs === 'dong') {
-            res.send('동영상 보기 게시판 화면')
-        } else {
-            res.send('해당 게시판 없음');
-        }
-    });
+    router.get('/ssam/:bbs', ssam.bbs);
 
-    router.get('/ssam/:bbs/:articleNo', function(req, res) {
-        const kindOfBbs = req.params.bbs;
-        const articleNo = req.params.articleNo;
+    router.get('/ssam/:bbs/:articleNo', ssam.article);
 
-        const detail = getArticleDetailFromBbsAndArticleNo(kindOfBbs, articleNo);
-    });
+    router.get('/movie/starwars', movie.viewAll);
 
     app.use(router);
 
