@@ -1,15 +1,127 @@
-var MongoClient = require('mongodb').MongoClient;
+const MongoClient = require('mongodb').MongoClient;
 
-MongoClient.connect('mongodb://localhost:27017/mongotest', function(err, db) {
+const startwarsList = [
+    {
+        "title": "가디언 오브 더 스타 워즈 빌리지",
+        "link": "http://movie.naver.com/movie/bi/mi/basic.nhn?code=160895",
+        "image": "",
+        "subtitle": "Guardian of The <b>Star</b> <b>Wars</b> Village",
+        "pubDate": "2017",
+        "director": "펄 위커더|앤더스 필|",
+        "actor": "",
+        "userRating": "0.00"
+  
+      },
+      {
+        "title": "로그 원: 스타워즈 스토리",
+        "link": "http://movie.naver.com/movie/bi/mi/basic.nhn?code=136868",
+        "image": "http://imgmovie.naver.com/mdi/mit110/1368/136868_P75_101138.jpg",
+        "subtitle": "Rogue One: A <b>Star</b> <b>Wars</b> Story",
+        "pubDate": "2016",
+        "director": "가렛 에드워즈|",
+        "actor": "펠리시티 존스|디에고 루나|매즈 미켈슨|리즈 아메드|포레스트 휘태커|견자단|강문|",
+        "userRating": "8.44"
+  
+      },
+      {
+        "title": "스타워즈: 깨어난 포스 레고 피겨",
+        "link": "http://movie.naver.com/movie/bi/mi/basic.nhn?code=149531",
+        "image": "http://imgmovie.naver.com/mdi/mit110/1495/149531_P01_181616.jpg",
+        "subtitle": "Lego <b>Star</b> <b>Wars</b>: Short Clip",
+        "pubDate": "2016",
+        "director": "",
+        "actor": "",
+        "userRating": "1.00"
+  
+      },
+      {
+        "title": "스타워즈: 깨어난 포스",
+        "link": "http://movie.naver.com/movie/bi/mi/basic.nhn?code=100072",
+        "image": "http://imgmovie.naver.com/mdi/mit110/1000/100072_P77_104127.jpg",
+        "subtitle": "<b>Star</b> <b>Wars</b> : The Force Awakens",
+        "pubDate": "2015",
+        "director": "J.J. 에이브럼스|",
+        "actor": "해리슨 포드|마크 해밀|캐리 피셔|도널 글리슨|그웬돌린 크리스티|사이먼 페그|오스카 아이삭|막스 폰 시도우|존 보예가|데이지 리들리|아담 드라이버|",
+        "userRating": "7.76"
+  
+      },
+      {
+        "title": "스타워즈 반란군",
+        "link": "http://movie.naver.com/movie/bi/mi/basic.nhn?code=132345",
+        "image": "http://imgmovie.naver.com/mdi/mit110/1323/132345_P01_153355.jpg",
+        "subtitle": "<b>Star</b> <b>Wars</b>",
+        "pubDate": "2014",
+        "director": "",
+        "actor": "",
+        "userRating": "9.57"
+  
+      },
+      {
+        "title": "로봇 치킨: 스타 워즈 에피소드 3",
+        "link": "http://movie.naver.com/movie/bi/mi/basic.nhn?code=85738",
+        "image": "",
+        "subtitle": "Robot Chicken: <b>Star</b> <b>Wars</b> Episode III",
+        "pubDate": "2010",
+        "director": "크리스 맥케이|",
+        "actor": "세스 그린|아브라함 벤루비|",
+        "userRating": "6.67"
+  
+      },
+      {
+        "title": "스타 워즈: 클론 전쟁",
+        "link": "http://movie.naver.com/movie/bi/mi/basic.nhn?code=49821",
+        "image": "http://imgmovie.naver.com/mdi/mit110/0498/D9821-00.jpg",
+        "subtitle": "<b>Star</b> <b>Wars</b>: The Clone <b>Wars</b>",
+        "pubDate": "2008",
+        "director": "데이브 필로니|",
+        "actor": "맷 랜터|사무엘 L. 잭슨|이안 아베크롬비|코리 버튼|톰 케인|제임스 아놀드 테일러|캐서린 타버|",
+        "userRating": "7.48"
+  
+      }
+]
+
+MongoClient.connect('mongodb://localhost:27017', function(err, client) {
     console.log('Connected to MongoDB!');
+    const db = client.db('movie');
+    const collection = db.collection('starwars');
 
-    var collection = db.collection('testing');
-    collection.insert({'title': 'Snowcrash'}, function(err, docs) {
-        console.log(docs.ops.length + ' records inserted.');
-        console.log(docs.ops[0]._id + ' - ' + docs.ops[0].title);
+    // collection.insertMany(startwarsList, function(err, result) {
+    //     console.log(`${result.result.n} 개 입력 완료`);
+    // });
 
-        collection.findOne({title: 'Snowcrash'}, function(err, doc) {
-            console.log(doc._id + ' - ' + doc.title);
-        });
+    collection.find({pubDate: '2016'}).toArray(function(err, docs) {
+        console.log(docs);
     });
+
+    // collection.find({}).toArray(function (err, docs) {
+    //     console.log(docs);
+    // });
+
+    // collection.insertOne({
+    //   "title": "스타워즈: 라스트 제다이",
+    //   "link": "http://movie.naver.com/movie/bi/mi/basic.nhn?code=125488",
+    //   "image": "http://imgmovie.naver.com/mdi/mit110/1254/125488_P20_135324.jpg",
+    //   "subtitle": "<b>Star</b> <b>Wars</b>: The Last Jedi",
+    //   "pubDate": "2017",
+    //   "director": "라이언 존슨|",
+    //   "actor": "데이지 리들리|마크 해밀|오스카 아이삭|아담 드라이버|캐리 피셔|존 보예가|",
+    //   "userRating": "6.82"
+    
+    // }, function() {
+    //     console.log('insert OK...');
+    // });
+
+    // collection.find(function(err, doc) {
+    //     console.log(doc);
+    // });
+    // collection.insert({'title': 'Snowcrash'}, function(err, docs) {
+    //     console.log(docs.ops.length + ' records inserted.');
+    //     console.log(docs.ops[0]._id + ' - ' + docs.ops[0].title);
+
+    //     collection.findOne({title: 'Snowcrash'}, function(err, doc) {
+    //         console.log(doc._id + ' - ' + doc.title);
+    //     });
+    // });
+
+    client.close();
 });
