@@ -1,7 +1,7 @@
 var mongoose = require('mongoose'),
     Schema = mongoose.Schema;
 
-mongoose.connect('mongodb://localhost:27017/mongotest');
+mongoose.connect('mongodb://localhost:27017/movie');
 mongoose.connection.on('open', function() {
     console.log('Mongoose connected.');
 });
